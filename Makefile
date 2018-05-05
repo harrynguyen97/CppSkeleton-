@@ -38,7 +38,10 @@ OBJ_LIBS = $(patsubst $(LIB_SRC_DIR)/%.cpp, $(LIB_OBJ_DIR)/%.o, $(SOURCE_LIBS))
 
 # All necessary files and directories for project
 WORKING_FILES = LICENSE README.md
-WORKING_DIRS = bin lib $(LIB_OBJ_DIR) $(LIB_SRC_DIR) $(LIB_INC_DIR) src 
+WORKING_DIRS = bin lib $(LIB_OBJ_DIR) $(LIB_SRC_DIR) $(LIB_INC_DIR) src test
+
+MAKEFILE_TEST_LINK = \
+	https://raw.githubusercontent.com/harrynguyen97/CppSkeleton-/master/test_skeleton/Makefile
 
 all: $(OBJ_LIBS) $(PROJ_NAME)
 
@@ -65,6 +68,17 @@ configure:
 	@mkdir -p $(WORKING_DIRS)
 	@touch $(WORKING_FILES)
 	@echo Finished.
+
+	# Download Makefile for Unit Testing from Github
+	@$(RM) test/Makefile
+	@echo Download necessary files...
+	@wget -P test/ $(MAKEFILE_TEST_LINK)
+
+	# Make the Makefile in test for unit testing
+	# make -C <dir> <option> is for changing the directory for multiple make
+	@make -C test configure 
+	
+	@echo Finished
 
 # For debugging purpose.
 debug: 
