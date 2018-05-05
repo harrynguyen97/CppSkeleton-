@@ -33,7 +33,7 @@ HEADER_LIBS = $(wildcard $(LIB_INC_DIR)/**/*.hpp $(LIB_INC_DIR)/*.hpp)
 
 # Get all object files by substituting .cpp by .o
 # More info: See "patsubst in Makefile"
-OBJ_LIBS = $(patsubst %.cpp, %.o, $(SOURCE_LIBS))
+OBJ_LIBS = $(patsubst $(LIB_SRC_DIR)/%.cpp, $(LIB_OBJ_DIR)/%.o, $(SOURCE_LIBS))
 
 
 # All necessary files and directories for project
