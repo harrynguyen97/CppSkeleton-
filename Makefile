@@ -69,13 +69,13 @@ configure:
 	@touch $(WORKING_FILES)
 	@echo Finished.
 
-	# Download Makefile for Unit Testing from Github
+	@# Download Makefile for Unit Testing from Github
 	@$(RM) test/Makefile
 	@echo Download necessary files...
 	@wget -P test/ $(MAKEFILE_TEST_LINK)
 
-	# Make the Makefile in test for unit testing
-	# make -C <dir> <option> is for changing the directory for multiple make
+	@# Make the Makefile in test for unit testing
+	@# make -C <dir> <option> is for changing the directory for multiple make
 	@make -C test configure 
 	
 	@echo Finished
