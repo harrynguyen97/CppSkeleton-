@@ -5,13 +5,13 @@ PROJECT_NAME = Google-Spelling-Checker
 CC = g++
 
 # Directory of object libraries
-LIB_OBJ_DIR = lib/build 
+LIB_OBJ_DIR = lib/build
 
 # Directory of library source file
 LIB_SRC_DIR = lib/src
 
 # Directory of header used for library source file
-LIB_INC_DIR = lib/inc 
+LIB_INC_DIR = lib/inc
 
 # General flags for CPP compiler
 CPP_FLAGS = -O2 -Wall -DNDEBUG -I$(LIB_INC_DIR) $(EXTRA_OPTIONS) 
@@ -33,7 +33,7 @@ HEADER_LIBS = $(wildcard $(LIB_INC_DIR)/**/*.hpp $(LIB_INC_DIR)/*.hpp)
 
 # Get all object files by substituting .cpp by .o
 # More info: See "patsubst in Makefile"
-OBJ_LIBS = $(patsubst $(LIB_SRC_DIR)/%.cpp, $(LIB_OBJ_DIR)/%.o, $(SOURCE_LIBS))
+OBJ_LIBS = $(patsubst %.cpp, %.o, $(SOURCE_LIBS))
 
 
 # All necessary files and directories for project
