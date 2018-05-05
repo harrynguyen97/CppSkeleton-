@@ -47,8 +47,8 @@ $(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS)
 	@echo Building object libraries...
 	@$(CC) $(CPP_FLAGS) $(LIB_FLAGS) $(SOURCE_LIBS)
 
-	# Move *.o to lib/build because g++ can not generate multiple .o file
-	# into a designated directory
+	@# Move *.o to lib/build because g++ can not generate multiple .o file
+	@# into a designated directory
 	@mv *.o -v $(LIB_OBJ_DIR)
 
 	@echo Finished.
@@ -70,21 +70,21 @@ configure:
 debug: 
 	@echo Create debuging file...
 
-	# Generate a.out
+	@# Generate a.out
 	@$(CC) $(DEBUG_FLAGS) src/main.cpp $(OBJ_LIBS) 
 	
-	# Move a.out to bin/ because g++ does not provide any way to
-	# generate a.out file into a specific directory
+	@# Move a.out to bin/ because g++ does not provide any way to
+	@# generate a.out file into a specific directory
 	@mv a.out bin/
 
 	@echo Finished.
 	@echo Debugging mode.
 	
-	# Debug
+	@# Debug
 	@gdb bin/a.out 
 
 .PHONY: clean
 clean: 
-	@echo Cleaning following files: [$(OBJ_LIBS)]...
+	@echo Cleaning following files: [$(OBJ_LIBS) $(PROJECT_NAME)]...
 	@$(RM) -rf $(OBJ_LIBS) $(PROJECT_NAME)
 	@echo Finished.
