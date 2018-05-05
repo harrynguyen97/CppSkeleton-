@@ -1,6 +1,6 @@
 # Put your project's name right here
 # This will generate an execitive file whose name $(PROJECT_NAME)
-PROJECT_NAME = Google-Spelling-Checker
+PROJ_NAME = main
 
 CC = g++
 
@@ -40,7 +40,7 @@ OBJ_LIBS = $(patsubst $(LIB_SRC_DIR)/%.cpp, $(LIB_OBJ_DIR)/%.o, $(SOURCE_LIBS))
 WORKING_FILES = LICENSE README.md
 WORKING_DIRS = bin lib $(LIB_OBJ_DIR) $(LIB_SRC_DIR) $(LIB_INC_DIR) src 
 
-all: $(OBJ_LIBS) $(PROJECT_NAME)
+all: $(OBJ_LIBS) $(PROJ_NAME)
 
 # Compile object libraries 
 $(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS)
@@ -54,7 +54,7 @@ $(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS)
 	@echo Finished.
 
 # Compile executive file from src/main.cpp whose name $(PROJECT_NAME)
-$(PROJECT_NAME): $(SOURCE_LIBS) $(HEADER_LIBS) 
+$(PROJ_NAME): $(SOURCE_LIBS) $(HEADER_LIBS) 
 	@echo Building executive files...
 	@$(CC) $(CPP_FLAGS) src/main.cpp $(OBJ_LIBS) $(OUTPUT_FLAGS) $@
 	@echo Finished.
@@ -85,6 +85,6 @@ debug:
 
 .PHONY: clean
 clean: 
-	@echo Cleaning following files: [$(OBJ_LIBS) $(PROJECT_NAME)]...
-	@$(RM) -rf $(OBJ_LIBS) $(PROJECT_NAME)
+	@echo Cleaning following files: [$(OBJ_LIBS) $(PROJ_NAME)]...
+	@$(RM) -rf $(OBJ_LIBS) $(PROJ_NAME)
 	@echo Finished.
