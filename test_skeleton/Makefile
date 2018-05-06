@@ -29,7 +29,7 @@ TEST_SRC_FILE = src/test_$(TEST_NAME).cpp
 
 # Name of object file name_of_your_test.o used 
 # for compiling test_<name_of_your_test>
-OBJ_FILE = ../lib/build/$(TEST_NAME).o
+OBJ_FILE = ../lib/build/*.o
 
 # Github link github to speed_up_test.cpp
 SPEED_UP_CPP = \
