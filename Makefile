@@ -45,6 +45,8 @@ MAKEFILE_TEST_LINK = \
 
 all: $(OBJ_LIBS) $(PROJ_NAME)
 
+class: $(OBJ_LIBS)
+
 # Compile object libraries 
 $(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS)
 	@echo Building object libraries...
