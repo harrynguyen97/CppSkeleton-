@@ -59,7 +59,7 @@ $(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS)
 	@echo Finished.
 
 # Compile executive file from src/main.cpp whose name $(PROJECT_NAME)
-$(PROJ_NAME): $(SOURCE_LIBS) $(HEADER_LIBS) 
+$(PROJ_NAME): $(SOURCE_LIBS) $(HEADER_LIBS) src/main.cpp
 	@echo Building executive files...
 	@$(CC) $(CPP_FLAGS) src/main.cpp $(OBJ_LIBS) $(OUTPUT_FLAGS) $@
 	@echo Finished.
