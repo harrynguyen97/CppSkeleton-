@@ -14,13 +14,13 @@ LIB_SRC_DIR = lib/src
 LIB_INC_DIR = lib/inc
 
 # General flags for CPP compiler
-CPP_FLAGS = -O2 -Wall -DNDEBUG -I$(LIB_INC_DIR) $(EXTRA_OPTIONS) 
+CPP_FLAGS = -O2 -Wall -DNDEBUG -I$(LIB_INC_DIR) $(EXTRA_OPTIONS) -std=c++11
 
 # Flags for generate object library
 LIB_FLAGS = -c 
 
 # Flags for debugging
-DEBUG_FLAGS = -g -Wall -I$(LIB_INC_DIR)
+DEBUG_FLAGS = -g -Wall -I$(LIB_INC_DIR) 
 
 # Flag for output executive file
 OUTPUT_FLAGS = -o
