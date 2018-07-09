@@ -14,7 +14,7 @@ LIB_SRC_DIR = lib/src
 LIB_INC_DIR = lib/inc
 
 # General flags for CPP compiler
-CPP_FLAGS = -O2 -Wall -DNDEBUG -I$(LIB_INC_DIR) $(EXTRA_OPTIONS) -std=c++11
+CPP_FLAGS = -O2 -Wall -DNDEBUG -I$(LIB_INC_DIR) $(EXTRA_OPTIONS) -std=c++0x
 
 # Flags for generate object library
 LIB_FLAGS = -c 
