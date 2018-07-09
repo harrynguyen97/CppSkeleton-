@@ -14,7 +14,7 @@ LIB_SRC_DIR = lib/src
 LIB_INC_DIR = lib/inc
 
 # General flags for CPP compiler
-CPP_FLAGS = -O2 -Wall -DNDEBUG -I$(LIB_INC_DIR) $(EXTRA_OPTIONS) -std=c++0x
+CPP_FLAGS = -O2 -Wall -DNDEBUG -I$(LIB_INC_DIR) $(EXTRA_OPTIONS) -std=c++11
 
 # Flags for generate object library
 LIB_FLAGS = -c 
@@ -76,9 +76,14 @@ configure:
 	@echo Download necessary files...
 	@wget -P test/ $(MAKEFILE_TEST_LINK)
 
+
+	@# [TODO] It seems like speeding catch does not work properly, it requires C++11,
+	@# but it stills does not work, even though I turn flag -std=c++11 on.
+
+	@# Uncomment these lines for configuring unit testing
 	@# Make the Makefile in test for unit testing
 	@# make -C <dir> <option> is for changing the directory for multiple make
-	@make -C test configure 
+	@#make -C test configure 
 	
 	@echo Finished
 
