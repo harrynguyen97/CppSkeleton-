@@ -14,7 +14,7 @@ TEST_NAME = example
 INC = -I../lib/inc -Iinc
 
 # General flags for compiling executive file
-CPP_FLAGS = -O2 -Wall $(INC) -std=c++11
+CPP_FLAGS = -O2 -Wall $(INC) -std=c++0x
 
 # This object file used for speeding up Catch unit test
 # speed_up_test.o is packed 
