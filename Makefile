@@ -46,9 +46,9 @@ all: $(OBJ_LIBS) $(PROJ)
 class: $(OBJ_LIBS)
 
 # Compile object libraries 
-$(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS)
+$(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS) CXXFLAG+=LIB_FLAGS
 	@echo Building object libraries...
-	@$(CXX) $(CXXFLAGS) $(LIB_FLAGS) $(SOURCE_LIBS)
+	@$(CXX) $(CXXFLAGS) $(SOURCE_LIBS)
 
 	@# Move *.o to lib/build because g++ can not generate multiple .o file
 	@# into a specified directory
