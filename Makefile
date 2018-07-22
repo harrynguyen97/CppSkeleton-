@@ -58,14 +58,14 @@ $(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS)
 
 # Compile executive file from src/main.cpp named $(PROJ)
 $(PROJ): $(SOURCE_LIBS) $(HEADER_LIBS) src/main.cpp
-	@echo Building executive files...
+	@echo Building executive file...
 	@$(CXX) $(CXXFLAGS) src/main.cpp $(OBJ_LIBS) $(OUTPUT_FLAGS) $@
 	@echo Finished.
 
 # Make necessary directories and file
 .PHONY: configure
 configure:
-	@echo Creating working files and directories...
+	@echo Creating neccessary files and directories...
 	@mkdir -p $(WORKING_DIRS)
 	@touch $(WORKING_FILES)
 	@echo Finished.
