@@ -21,7 +21,7 @@ CXXFLAGS = -O2 -Wall -DNDEBUG -std=c++11 -I$(IPATH)
 LIB_FLAGS = -c 
 
 # Flags for debugging
-DEBUG_FLAGS = -g -Wall -I$(IPATH) 
+DEBUG_FLAGS = -g -Wall -I$(IPATH) -std=c++11 
 
 # Flag for output executive file
 OUTPUT_FLAGS = -o
