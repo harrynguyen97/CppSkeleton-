@@ -63,6 +63,7 @@ $(PROJ): $(SOURCE_LIBS) $(HEADER_LIBS) src/main.cpp
 	@echo Finished.
 
 # Make necessary directories and file
+.PHONY: configure
 configure:
 	@echo Creating working files and directories...
 	@mkdir -p $(WORKING_DIRS)
