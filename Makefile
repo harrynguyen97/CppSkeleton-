@@ -18,10 +18,10 @@ IPATH = lib/inc
 CXXFLAGS = -O2 -Wall -DNDEBUG -std=c++11 -I$(IPATH)
 
 # Flags for generate object library
-LIB_FLAGS = -c 
+# LIB_FLAGS = -c 
 
 # Flags for debugging
-DEBUG_FLAGS = -g -Wall -I$(IPATH) -std=c++11 
+# DEBUG_FLAGS = -g -Wall -I$(IPATH) -std=c++11 
 
 # Flag for output executive file
 OUTPUT_FLAGS = -o
@@ -36,7 +36,6 @@ HEADER_LIBS = $(wildcard $(IPATH)/**/*.h $(IPATH)/*.h)
 # More info: Google "patsubst in Makefile"
 OBJ_LIBS = $(patsubst $(SPATH)/%.cpp, $(OPATH)/%.o, $(SOURCE_LIBS))
 
-
 # All necessary files and directories for project
 WORKING_FILES = LICENSE README.md
 WORKING_DIRS = bin lib $(OPATH) $(SPATH) $(IPATH) src
@@ -46,7 +45,8 @@ all: $(OBJ_LIBS) $(PROJ)
 class: $(OBJ_LIBS)
 
 # Compile object libraries 
-$(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS) CXXFLAG+=LIB_FLAGS
+$(OBJ_LIBS): CXXFLAGS += -c 
+$(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS) 
 	@echo Building object libraries...
 	@$(CXX) $(CXXFLAGS) $(SOURCE_LIBS)
 
@@ -87,10 +87,11 @@ configure:
 
 # For debugging purpose.
 .PHONY: debug
+debug: CXXFLAGS += -g
 debug: 
 	@echo Create debuging file...
 	@# Generate a.out
-	@$(CXX) $(DEBUG_FLAGS) src/main.cpp $(OBJ_LIBS) 
+	@$(CXX) $(CXXFLAGS) src/main.cpp $(OBJ_LIBS) 
 	
 	@# Move a.out to bin/ because g++ does not provide any way to
 	@# generate a.out file into a specified directory
