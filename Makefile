@@ -17,12 +17,6 @@ IPATH = lib/inc
 # General flags for g++ compiler
 CXXFLAGS = -O2 -Wall -DNDEBUG -std=c++11 -I$(IPATH)
 
-# Flags for generate object library
-# LIB_FLAGS = -c 
-
-# Flags for debugging
-# DEBUG_FLAGS = -g -Wall -I$(IPATH) -std=c++11 
-
 # Flag for output executive file
 OUTPUT_FLAGS = -o
 
@@ -37,15 +31,15 @@ HEADER_LIBS = $(wildcard $(IPATH)/**/*.h $(IPATH)/*.h)
 OBJ_LIBS = $(patsubst $(SPATH)/%.cpp, $(OPATH)/%.o, $(SOURCE_LIBS))
 
 # All necessary files and directories for project
-WORKING_FILES = LICENSE README.md
-WORKING_DIRS = bin lib $(OPATH) $(SPATH) $(IPATH) src
+FILES = LICENSE README.md
+DIRS = bin lib $(OPATH) $(SPATH) $(IPATH) src
 
 all: $(OBJ_LIBS) $(PROJ)
 
 class: $(OBJ_LIBS)
 
 # Compile object libraries 
-$(OBJ_LIBS): CXXFLAGS += -c 
+$(OBJ_LIBS): CXXFLAGS += -c # flag for compiling object libraries
 $(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS) 
 	@echo Building object libraries...
 	@$(CXX) $(CXXFLAGS) $(SOURCE_LIBS)
@@ -59,15 +53,15 @@ $(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS)
 # Compile executive file from src/main.cpp named $(PROJ)
 $(PROJ): $(SOURCE_LIBS) $(HEADER_LIBS) src/main.cpp
 	@echo Building executive file...
-	@$(CXX) $(CXXFLAGS) src/main.cpp $(OBJ_LIBS) $(OUTPUT_FLAGS) $@
+	@$(CXX) $(CXXFLAGS) src/main.cpp $(OBJ_LIBS) -o $@
 	@echo Finished.
 
 # Make necessary directories and file
 .PHONY: configure
 configure:
 	@echo Creating neccessary files and directories...
-	@mkdir -p $(WORKING_DIRS)
-	@touch $(WORKING_FILES)
+	@mkdir -p $(DIRS)
+	@touch $(FILES)
 	@echo Finished.
 
 	@# [TODO] It seems like speeding Catch Unite Testing does not work properly, 
@@ -87,7 +81,7 @@ configure:
 
 # For debugging purpose.
 .PHONY: debug
-debug: CXXFLAGS += -g
+debug: CXXFLAGS += -g # flag for debuging
 debug: 
 	@echo Create debuging file...
 	@# Generate a.out
