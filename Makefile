@@ -17,9 +17,6 @@ IPATH = lib/inc
 # General flags for g++ compiler
 CXXFLAGS = -O2 -Wall -DNDEBUG -std=c++11 -I$(IPATH)
 
-# Flag for output executive file
-OUTPUT_FLAGS = -o
-
 # Get all source files in /lib/src and its subdirectories 
 SOURCE_LIBS = $(wildcard $(SPATH)/**/*.cpp $(SPATH)/*.cpp)
 
