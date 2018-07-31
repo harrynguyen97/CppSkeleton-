@@ -3,9 +3,9 @@
 PROJ = main
 
 # Because C is a subset of C++, I use C++ Makefile for C projects.
-
 # Select language 
 LANG = c
+# Uncomment this to choose C++
 # LANG = cpp
 
 # Compiler
@@ -22,7 +22,15 @@ IPATH = lib/inc
 
 # General flags for g++ compiler
 CXXFLAGS = -O2 -Wall -DNDEBUG -I$(IPATH)
-# CXXFLAGS = -O2 -Wall -DNDEBUG -std=c++11 -I$(IPATH)
+
+ifeq ($(LANG),c)
+CXXFLAGS +=
+# If C++ is chosen, add -std=c++11 to CXXFLAGS
+else 
+ifeq ($(LANG),cpp)
+CXXFLAGS += -std=c++11
+endif
+endif
 
 # Get all source files in /lib/src and its subdirectories 
 SOURCE_LIBS = $(wildcard $(SPATH)/**/*.$(LANG) $(SPATH)/*.$(LANG))
@@ -40,6 +48,7 @@ DIRS = bin lib $(OPATH) $(SPATH) $(IPATH) src
 
 all: $(OBJ_LIBS) $(PROJ)
 
+# Compile object files
 class: $(OBJ_LIBS)
 
 # Compile object libraries 
