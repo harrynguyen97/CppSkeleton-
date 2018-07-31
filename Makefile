@@ -24,12 +24,12 @@ IPATH = lib/inc
 CXXFLAGS = -O2 -Wall -DNDEBUG -I$(IPATH)
 
 ifeq ($(LANG),c)
-CXXFLAGS +=
-# If C++ is chosen, add -std=c++11 to CXXFLAGS
+	CXXFLAGS +=
 else 
-ifeq ($(LANG),cpp)
-CXXFLAGS += -std=c++11
-endif
+	# If C++ is chosen, add -std=c++11 to CXXFLAGS
+	ifeq ($(LANG),cpp)
+		CXXFLAGS += -std=c++11
+	endif
 endif
 
 # Get all source files in /lib/src and its subdirectories 
