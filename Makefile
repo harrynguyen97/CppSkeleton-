@@ -2,6 +2,12 @@
 # This will generate an executive file named $(PROJ)
 PROJ = main
 
+# Because C is a subset of C++, I use C++ Makefile for C projects.
+
+# Select language 
+LANG = c
+# LANG = cpp
+
 # Compiler
 CXX = g++
 
@@ -15,17 +21,18 @@ SPATH = lib/src
 IPATH = lib/inc
 
 # General flags for g++ compiler
-CXXFLAGS = -O2 -Wall -DNDEBUG -std=c++11 -I$(IPATH)
+CXXFLAGS = -O2 -Wall -DNDEBUG -I$(IPATH)
+# CXXFLAGS = -O2 -Wall -DNDEBUG -std=c++11 -I$(IPATH)
 
 # Get all source files in /lib/src and its subdirectories 
-SOURCE_LIBS = $(wildcard $(SPATH)/**/*.cpp $(SPATH)/*.cpp)
+SOURCE_LIBS = $(wildcard $(SPATH)/**/*.$(LANG) $(SPATH)/*.$(LANG))
 
 # Get all header files in lib/inc and its subdirectories
 HEADER_LIBS = $(wildcard $(IPATH)/**/*.h $(IPATH)/*.h)
 
 # Get all object files by substituting .cpp by .o
 # More info: Google "patsubst in Makefile"
-OBJ_LIBS = $(patsubst $(SPATH)/%.cpp, $(OPATH)/%.o, $(SOURCE_LIBS))
+OBJ_LIBS = $(patsubst $(SPATH)/%.$(LANG), $(OPATH)/%.o, $(SOURCE_LIBS))
 
 # All necessary files and directories for project
 FILES = LICENSE README.md
@@ -48,9 +55,9 @@ $(OBJ_LIBS): $(SOURCE_LIBS) $(HEADER_LIBS)
 	@echo Finished.
 
 # Compile executive file from src/main.cpp named $(PROJ)
-$(PROJ): $(SOURCE_LIBS) $(HEADER_LIBS) src/main.cpp
+$(PROJ): $(SOURCE_LIBS) $(HEADER_LIBS) src/main.$(LANG)
 	@echo Building executive file...
-	@$(CXX) $(CXXFLAGS) src/main.cpp $(OBJ_LIBS) -o $@
+	@$(CXX) $(CXXFLAGS) src/main.$(LANG) $(OBJ_LIBS) -o $@
 	@echo Finished.
 
 # Make necessary directories and file
@@ -82,7 +89,7 @@ debug: CXXFLAGS += -g # flag for debuging
 debug: 
 	@echo Create debuging file...
 	@# Generate a.out
-	@$(CXX) $(CXXFLAGS) src/main.cpp $(OBJ_LIBS) 
+	@$(CXX) $(CXXFLAGS) src/main.$(LANG) $(OBJ_LIBS) 
 	
 	@# Move a.out to bin/ because g++ does not provide any way to
 	@# generate a.out file into a specified directory
