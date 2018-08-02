@@ -18,9 +18,12 @@ else
 endif
 
 # [WARNING] Be careful with space in Makefile 
-OPATH = lib/build\ # Path for object library
-SPATH = lib/src\ # Path for library source file
-IPATH = lib/inc\ # Path for library header files 
+# Path for object library
+OPATH = lib/build
+# Path for library source file
+SPATH = lib/src
+# Path for library header files 
+IPATH = lib/inc
 
 # Get all source files in /lib/src and its subdirectories 
 SOURCE_LIBS = $(wildcard $(SPATH)/**/*.$(LANG) $(SPATH)/*.$(LANG))
