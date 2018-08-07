@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Automatically download and configure C project
+repository=https://raw.githubusercontent.com/harrynguyen97/c-project/master
+
+curl $repository/Makefile > Makefile && 
+make configure && 
+curl $repository/debug.h > lib/inc/debug.h

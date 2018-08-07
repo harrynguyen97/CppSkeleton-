@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Auto download Makefile from my github (https://github.com/harrynguyen97) and configure project.
+curl https://raw.githubusercontent.com/harrynguyen97/CppSkeleton-/master/Makefile > Makefile && make configure
+
