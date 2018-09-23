@@ -13,10 +13,8 @@ BRANCH=master
 FILE=Makefile
 
 # Download Makefile
-if [ ! -f Makefile ]; then
-	echo "Downloading Makefile..."
-	curl -O https://$HOST/$USER_NAME/$REPO/$BRANCH/$FILE
-	echo "Finished."
-fi
+echo "Downloading Makefile..."
+curl -O https://$HOST/$USER_NAME/$REPO/$BRANCH/$FILE
+echo "Finished."
 
 make configure
